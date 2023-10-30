@@ -3,7 +3,6 @@ package frc.robot;
 public class Hardware {
     
     // DRIVEBASE
-
     //motors
     public static final int DRIVEBASE_LEFT_MOTOR_CHANNEL = 0;
     public static final int DRIVEBASE_RIGHT_MOTOR_CHANNEL = 1;

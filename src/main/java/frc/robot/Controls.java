@@ -20,5 +20,5 @@ public class Controls {
     }
 
     // Control Bind Methods
-    
+
 }
