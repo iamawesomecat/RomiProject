@@ -29,11 +29,10 @@ public class Controls {
         SequentialCommand = driveController.x();
         
         // Initialize Controller and Button variables here
-      
-
-        // Call Bind Methods
         final Subsystems s;
 
+
+        // Call Bind Methods
         bindDrivebaseControls();
     }
 
