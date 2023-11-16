@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.drivebase.DriveCommand;
+import frc.robot.commands.drivebase.SequentialCommand;
 
 public class Controls {
     public static class ControlConstants {
@@ -19,11 +20,14 @@ public class Controls {
 
     // Controller + Button Variables
     public final Trigger driveCommand;
+    public final Trigger SequentialCommand;
     // Constructor
     public Controls(Subsystems subsystems) {
         this.subsystems = subsystems;
         driveController = new CommandXboxController(ControlConstants.CONTROLLER_PORT);
         driveCommand = driveController.leftStick();
+        SequentialCommand = driveController.x();
+        
         // Initialize Controller and Button variables here
       
 
@@ -36,6 +40,6 @@ public class Controls {
     // Control Bind Methods
     public void bindDrivebaseControls() {
         subsystems.drivebaseSubsystem.setDefaultCommand(new DriveCommand(subsystems.drivebaseSubsystem, driveController::getLeftY, driveController::getLeftX));
-            
+        subsystems.drivebaseSubsystem.setDefaultCommand(new SequentialCommand(subsystems.drivebaseSubsystem));
     }
 }
