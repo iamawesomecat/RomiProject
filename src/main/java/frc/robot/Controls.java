@@ -20,13 +20,13 @@ public class Controls {
 
     // Controller + Button Variables
     public final Trigger driveCommand;
-    public final Trigger SequentialCommand;
+    public final Trigger AutoButton;
     // Constructor
     public Controls(Subsystems subsystems) {
         this.subsystems = subsystems;
         driveController = new CommandXboxController(ControlConstants.CONTROLLER_PORT);
         driveCommand = driveController.leftStick();
-        SequentialCommand = driveController.x();
+        AutoButton = driveController.x();
         
         // Initialize Controller and Button variables here
         final Subsystems s;
@@ -39,6 +39,6 @@ public class Controls {
     // Control Bind Methods
     public void bindDrivebaseControls() {
         subsystems.drivebaseSubsystem.setDefaultCommand(new DriveCommand(subsystems.drivebaseSubsystem, driveController::getLeftY, driveController::getLeftX));
-        subsystems.drivebaseSubsystem.setDefaultCommand(new SequentialCommand(subsystems.drivebaseSubsystem));
+        AutoButton.onTrue(new SequentialCommand(subsystems.drivebaseSubsystem));
     }
 }

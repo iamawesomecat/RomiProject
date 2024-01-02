@@ -27,6 +27,5 @@ public class DriveCommand extends CommandBase {
         drivebaseSubsystem.arcadeDrive(forward.getAsDouble(), (turning.getAsDouble() * 0.5), true);
     }
 
-
     
 }

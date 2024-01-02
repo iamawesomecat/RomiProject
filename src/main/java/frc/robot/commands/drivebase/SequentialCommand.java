@@ -13,6 +13,9 @@ public class SequentialCommand extends SequentialCommandGroup {
         this.drivebaseSubsystem = drivebaseSubsystem;
  
         // adds the commands in order 4!!!!!!!!!!!!!!!!!!!!!!!!!!
-        addCommands(new AutoDriveCommand(drivebaseSubsystem, 1, 0), new WaitCommand(4), new AutoDriveCommand(drivebaseSubsystem, 0.3, 0.5), new WaitCommand(4), new AutoDriveCommand(drivebaseSubsystem, 0, 0));
+        System.out.println("Sequence started?");
+        addCommands(new AutoDriveCommand(drivebaseSubsystem, 1, 0).withTimeout(4),
+                    new AutoDriveCommand(drivebaseSubsystem, 0.3, 0.5).withTimeout(4),
+                    new AutoDriveCommand(drivebaseSubsystem, 0, 0).withTimeout(1));
     }
 }

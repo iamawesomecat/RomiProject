@@ -23,10 +23,18 @@ public class AutoDriveCommand extends CommandBase{
 	@Override
 	public void initialize() {
         timesRan++;
+        if (timesRan == 1){
+            System.out.println("Sequence Initialized");
+        }
         System.out.println("Initializing AutoDriveCommand\nTimes initialized: " + timesRan);
+
 	}
     @Override
     public void execute(){
         drivebaseSubsystem.arcadeDrive(forward, turning, false);
+    }
+    @Override
+    public void end(boolean interrupted){
+        System.out.println("AutoDriveCommand ended");
     }
 }

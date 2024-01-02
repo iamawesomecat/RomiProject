@@ -32,8 +32,15 @@ public class DrivebaseSubsystem extends SubsystemBase {
         m_diffDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
         m_diffDrive.setDeadband(0);
     }
+
+    int printCounter = 0;
+
     //reference this method in the DriveCommand, then bind the command to controls.
     public void arcadeDrive(double xaxisSpeed, double zaxisRotate, boolean squareInputs){
+        if (printCounter == 0) {
+            System.out.println("arcadeDrive(" + xaxisSpeed + ", " + zaxisRotate + ", " + squareInputs + ")");
+        }
+        printCounter = (printCounter + 1) % 10;
         m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate, squareInputs);
         //System.out.println(m_leftMotor.get());
     }
